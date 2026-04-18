@@ -7,154 +7,143 @@ cat << 'EOF' > index.html
     <meta name="google-site-verification" content="deJZH-IhPhqcP3lyCjnQy6kTySRDHV4Ksa-XHYdbbR8" />
     <title>Mundo de Keissy</title>
     <style>
-        :root {
-            --bg-dark: #020617;
-            --card-bg: #1e293b;
-            --accent: #c084fc;
-            --text-light: #f1f5f9;
-        }
-
         body {
             background: linear-gradient(to bottom, #0f172a, #020617);
-            color: var(--text-light);
-            font-family: 'Segoe UI', Arial, sans-serif;
+            color: white;
+            font-family: Arial, sans-serif;
             margin: 0;
-            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        header { text-align: center; padding: 60px 20px; background: rgba(2, 6, 23, 0.9); }
-        h1 { font-size: 45px; color: var(--accent); margin-bottom: 10px; }
-        
-        nav { 
-            text-align: center; padding: 15px; background: var(--bg-dark); 
-            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155;
-        }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-
-        section { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
-        
-        /* Buscador de Libros */
-        .search-container { text-align: center; margin-bottom: 30px; }
-        input[type="text"] {
-            padding: 12px; width: 60%; border-radius: 25px; border: none; outline: none;
-        }
-        
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        /* --- MENÚ DESPLEGABLE (SIDEBAR) --- */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 0;
+            background-color: #111827;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
         }
 
-        .book-card {
-            background: var(--card-bg);
-            padding: 15px;
+        .sidebar a {
+            padding: 8px 32px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #c084fc;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .menu-btn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #7c3aed;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        header { text-align: center; padding: 60px 20px; background: #020617; }
+        h1 { font-size: 40px; color: #c084fc; }
+        
+        section { padding: 40px; max-width: 800px; margin: 0 auto; }
+        
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 10px;
-            text-align: center;
             border: 1px solid #334155;
         }
-        .book-card img { width: 100%; border-radius: 5px; height: 250px; object-fit: cover; }
 
-        /* Biografía Section */
-        .bio-container {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            background: rgba(192, 132, 252, 0.1);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px dashed var(--accent);
-        }
-        .bio-img {
-            width: 150px; height: 150px; border-radius: 50%;
-            border: 3px solid var(--accent); background: #334155;
-        }
+        /* Buscador dentro del menú */
+        .search-box { padding: 20px; }
+        input { width: 80%; padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px; }
 
-        /* Música */
-        .music-player {
-            position: fixed; bottom: 20px; right: 20px;
-            background: var(--card-bg); padding: 10px;
-            border-radius: 15px; border: 1px solid var(--accent);
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-
-        footer { text-align: center; padding: 40px; background: var(--bg-dark); }
-        button {
-            padding: 10px 20px; background: #7c3aed; border: none;
-            color: white; border-radius: 25px; cursor: pointer;
-        }
+        footer { text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
 
+<button class="menu-btn" onclick="openNav()">☰ Más Info</button>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    
+    <div class="search-box">
+        <h3 style="color:white">🔍 Buscador</h3>
+        <input type="text" id="bookInput" placeholder="Busca un libro...">
+        <button onclick="searchBooks()" style="width:100%">Buscar</button>
+        <div id="results" style="margin-top:10px"></div>
+    </div>
+
+    <div style="padding:20px">
+        <h3 style="color:white">🎵 Música</h3>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZ0O9LpEU6zC" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>
+
+    <a href="#sobre" onclick="closeNav()">Sobre Keissy</a>
+</div>
+
 <header>
     <h1>✨ El Mundo de Keissy ✨</h1>
-    <p>¡Prepárate para el Día del Libro! 📖</p>
+    <p>Un lugar donde la fantasía cobra vida</p>
 </header>
 
-<nav>
-    <a href="#libros">Buscador</a>
-    <a href="#series">Series</a>
-    <a href="#sobre">Sobre Mí</a>
-</nav>
-
 <section id="libros">
-    <h2>🔍 Buscar Libros en Tiempo Real</h2>
-    <div class="search-container">
-        <input type="text" id="bookInput" placeholder="Escribe el nombre de un libro...">
-        <button onclick="searchBooks()">Buscar</button>
+    <h2>📚 Libros Favoritos</h2>
+    <div class="card">
+        <h3>Harry Potter</h3>
+        <p>Una historia llena de magia y aventuras.</p>
     </div>
-    <div id="results" class="results-grid"></div>
 </section>
 
 <section id="sobre">
     <h2>👑 Biografía de Keissy</h2>
-    <div class="bio-container">
-        <div class="bio-img">
-            <img src="https://via.placeholder.com/150" alt="Foto de Keissy" style="width:100%; border-radius:50%">
-        </div>
-        <div>
-            <h3>Keissy [Tu Apellido]</h3>
-            <p>Escritora en potencia y amante de los mundos fantásticos. Me encanta Harry Potter y las historias que me hacen viajar sin moverme de mi habitación.</p>
-            <p><strong>Meta 2026:</strong> ¡Leer 50 libros nuevos!</p>
-        </div>
+    <div class="card">
+        <p>Amante de la lectura y los mundos mágicos. Este espacio es para sus historias y aventuras.</p>
     </div>
 </section>
 
-<div class="music-player">
-    <p style="margin:0 0 5px 0; font-size:12px; color:var(--accent)">🎵 Música para leer</p>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZwtERXCS8gv?utm_source=generator&theme=0" width="250" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-</div>
-
 <footer>
-    <p>Creado con 💜 para la mejor lectora del mundo</p>
+    <p>Creado con 💜 para Keissy</p>
 </footer>
 
 <script>
+    function openNav() { document.getElementById("mySidebar").style.width = "300px"; }
+    function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+
     async function searchBooks() {
         const query = document.getElementById('bookInput').value;
         const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = "<p>Buscando magia...</p>";
-        
-        try {
-            const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
-            const data = await response.json();
-            resultsDiv.innerHTML = "";
-            
-            data.items.slice(0, 4).forEach(book => {
-                const info = book.volumeInfo;
-                const cover = info.imageLinks ? info.imageLinks.thumbnail : 'https://via.placeholder.com/150';
-                resultsDiv.innerHTML += `
-                    <div class="book-card">
-                        <img src="${cover}" alt="Portada">
-                        <h4>${info.title}</h4>
-                        <p style="font-size:12px">${info.authors ? info.authors[0] : 'Autor desconocido'}</p>
-                    </div>
-                `;
-            });
-        } catch (error) {
-            resultsDiv.innerHTML = "<p>Error buscando libros.</p>";
-        }
+        resultsDiv.innerHTML = "<p>Buscando...</p>";
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+        const data = await response.json();
+        resultsDiv.innerHTML = "";
+        data.items.slice(0, 2).forEach(book => {
+            const info = book.volumeInfo;
+            const cover = info.imageLinks ? info.imageLinks.thumbnail : '';
+            resultsDiv.innerHTML += `<div style="margin-bottom:10px; text-align:center"><img src="${cover}" width="50"><br><span style="font-size:12px">${info.title}</span></div>`;
+        });
     }
 </script>
 
