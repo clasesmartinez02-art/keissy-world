@@ -13,6 +13,11 @@ cat << 'EOF' > index.html
             --gold: #c5a059;
             --violet: #4c2a6b;
             --text: #e0d5e8;
+            --parchment: #f4e4bc; /* Color papel antiguo */
+        }
+
+        html {
+            scroll-behavior: smooth; /* Desplazamiento suave */
         }
 
         body {
@@ -106,13 +111,27 @@ cat << 'EOF' > index.html
             overflow: hidden;
         }
 
-        .card::before {
-            content: "☽";
+        /* Tarjeta estilo papel pergamino para el perfil */
+        #perfil.card {
+            background: var(--parchment);
+            color: #331a00; /* Texto oscuro para el papel */
+            border: 3px solid #b38f00; /* Borde de oro más viejo */
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
+        }
+
+        #perfil.card::before {
+            content: "☾";
             position: absolute;
-            right: 10px;
-            top: 10px;
-            color: var(--gold);
-            opacity: 0.3;
+            right: 15px;
+            top: 15px;
+            color: #b38f00;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        #perfil.card h2 {
+            color: #331a00;
+            border-bottom: 1px solid #b38f00;
         }
 
         .card h2 {
@@ -123,10 +142,24 @@ cat << 'EOF' > index.html
             margin-top: 0;
         }
 
-        /* Perfil Estilo Wiki */
+        /* Perfil Estilo Wiki con Avatar Vectorial */
         .infobox {
             display: flex;
             gap: 20px;
+            align-items: center;
+        }
+
+        /* Avatar de Bruja recreado con SVG */
+        .witch-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid #b38f00;
+            background-color: var(--bg-deep);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="%23050208" stroke="%23b38f00" stroke-width="2"/><path d="M50 15 L80 75 L20 75 Z" fill="%234c2a6b" stroke="%23c5a059" stroke-width="2"/><circle cx="50" cy="45" r="10" fill="%23e0d5e8" stroke="%23c5a059" stroke-width="1"/></svg>');
+            background-size: cover;
+            box-shadow: 0 0 15px rgba(179, 143, 0, 0.5);
+            flex-shrink: 0;
         }
 
         .infobox table {
@@ -134,29 +167,35 @@ cat << 'EOF' > index.html
             font-size: 0.95rem;
         }
 
-        .infobox td { padding: 8px 0; border-bottom: 1px solid rgba(197, 160, 89, 0.1); }
-        .label { color: var(--gold); font-weight: bold; width: 40%; }
+        .infobox td { padding: 8px 0; }
+        .label { color: var(--gold); font-weight: bold; width: 45%; }
+        
+        /* Ajuste de color para tabla en papel */
+        #perfil .label { color: #806600; }
+        #perfil td { border-bottom: 1px solid rgba(128, 102, 0, 0.1); }
 
         /* Biblioteca */
         .shelf {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
             gap: 15px;
             margin-top: 15px;
         }
 
         .book {
-            height: 120px;
+            height: 130px;
             background: var(--violet);
-            border-left: 4px solid var(--gold);
+            border-left: 5px solid var(--gold);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-align: center;
             padding: 5px;
             box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+            transition: 0.3s;
         }
+        .book:hover { transform: translateY(-5px) rotate(-2deg); }
 
         /* Sistema de Galería Dinámica */
         #gallery {
@@ -168,7 +207,7 @@ cat << 'EOF' > index.html
 
         .photo-item {
             width: 100%;
-            height: 150px;
+            height: 160px;
             object-fit: cover;
             border: 1px solid var(--gold);
         }
@@ -204,8 +243,8 @@ cat << 'EOF' > index.html
     <div class="side-title">Keissy Nicole<br>Ogando Montero</div>
     <nav>
         <a href="#perfil">✦ Perfil Místico</a>
-        <a href="#biblioteca">✦ La Biblioteca (+100)</a>
-        <a href="#psique">✦ Laboratorio Psique</a>
+        <a href="#biblioteca">✦ La Biblioteca Gótica</a>
+        <a href="#psique">✦ Laboratorio Psicólogo</a>
         <a href="#coleccion">✦ Mi Colección</a>
     </nav>
     <div style="margin-top: auto;">
@@ -224,10 +263,10 @@ cat << 'EOF' > index.html
         <section id="perfil" class="card">
             <h2>Perfil de la Iniciada</h2>
             <div class="infobox">
-                <table>
+                <div class="witch-avatar"></div> <table>
                     <tr><td class="label">Nacimiento</td><td>25 de Agosto (Virgo)</td></tr>
                     <tr><td class="label">Origen</td><td>El Cercado, San Juan</td></tr>
-                    <tr><td class="label">Estatus</td><td>Lectora Legendaria</td></tr>
+                    <tr><td class="label">Estatus</td><td>Lectora Elite</td></tr>
                     <tr><td class="label">Facultad</td><td>Psicología</td></tr>
                     <tr><td class="label">Esencia</td><td>Bruja Aesthetic / Indie</td></tr>
                 </table>
