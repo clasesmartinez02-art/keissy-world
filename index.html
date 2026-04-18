@@ -5,43 +5,42 @@ cat << 'EOF' > index.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo de Keissy Nicole | Entre la psique y la fantasía</title>
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Playfair+Display:ital,wght@0,700;1,400&family=Playfair+Display+SC:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Playfair+Display+SC:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #050208;
-            --bg-accent: #12081a;
+            --bg-interface: #10081a;
+            --sidebar-bg: #21162d;
             --gold: #c5a059;
-            --violet: #4c2a6b;
-            --text: #e0d5e8;
+            --text-gold: #c5a059;
             --parchment: #f4e4bc; /* Color papel antiguo */
+            --violet-book: #4c2a6b;
+            --dracula-book: #8b0000;
         }
 
-        html {
-            scroll-behavior: smooth; /* Desplazamiento suave */
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            background: var(--bg-deep);
-            background-image: radial-gradient(circle at 50% 50%, var(--bg-accent) 0%, var(--bg-deep) 100%);
-            color: var(--text);
-            font-family: 'Marcellus', serif;
+            background-color: var(--bg-interface);
+            background-image: linear-gradient(180deg, #10081a 0%, #050208 100%);
+            color: var(--text-gold);
+            font-family: 'Playfair Display', serif;
             margin: 0;
             display: flex;
             min-height: 100vh;
         }
 
-        /* Barra Lateral Izquierda */
+        /* Barra Lateral Izquierda - Réplica de Madera */
         aside {
-            width: 280px;
-            background: rgba(10, 5, 15, 0.95);
+            width: 300px;
+            background-color: var(--sidebar-bg);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%2321162d"/><rect width="100" height="1" fill="%232d1f3b"/><rect x="50" width="1" height="100" fill="%232d1f3b"/></svg>'); /* Textura madera */
             border-right: 2px solid var(--gold);
             height: 100vh;
             position: fixed;
-            padding: 30px 20px;
+            padding: 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 20px;
             z-index: 100;
         }
 
@@ -49,84 +48,77 @@ cat << 'EOF' > index.html
             font-family: 'Playfair Display SC', serif;
             color: var(--gold);
             text-align: center;
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 15px;
             font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .side-subtitle {
+            font-size: 0.9rem;
+            color: var(--violet-book);
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         nav a {
-            display: block;
-            color: var(--text);
+            display: flex;
+            align-items: center;
+            color: var(--text-gold);
             text-decoration: none;
-            padding: 12px;
+            padding: 10px 15px;
+            margin-bottom: 5px;
             border-radius: 4px;
             transition: 0.3s;
-            margin-bottom: 5px;
-            border: 1px solid transparent;
         }
 
         nav a:hover {
-            background: var(--violet);
-            border-color: var(--gold);
+            background-color: #2d1f3b;
             color: white;
         }
 
         /* Contenido Principal */
         main {
-            margin-left: 280px;
-            padding: 50px;
+            margin-left: 300px;
+            padding: 40px;
             width: 100%;
         }
 
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: var(--gold);
             margin: 0;
-            text-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
         }
 
         header p {
             font-style: italic;
-            color: var(--violet);
-            font-size: 1.4rem;
+            color: var(--violet-book);
+            font-size: 1.3rem;
         }
 
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
         }
 
         .card {
-            background: rgba(20, 10, 25, 0.6);
+            background-color: rgba(33, 22, 45, 0.4);
             border: 1px solid var(--gold);
-            padding: 25px;
+            padding: 20px;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Tarjeta estilo papel pergamino para el perfil */
+        /* Ajuste Tarjeta Estilo Papel Místico para Perfil */
         #perfil.card {
-            background: var(--parchment);
-            color: #331a00; /* Texto oscuro para el papel */
-            border: 3px solid #b38f00; /* Borde de oro más viejo */
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
-        }
-
-        #perfil.card::before {
-            content: "☾";
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            color: #b38f00;
-            font-size: 1.2rem;
-            opacity: 0.5;
+            background-color: var(--parchment);
+            color: #331a00;
+            border: 2px solid #b38f00;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.1);
         }
 
         #perfil.card h2 {
@@ -137,86 +129,91 @@ cat << 'EOF' > index.html
         .card h2 {
             font-family: 'Playfair Display SC', serif;
             color: var(--gold);
-            border-bottom: 1px solid var(--violet);
-            padding-bottom: 10px;
+            border-bottom: 1px solid #4c2a6b;
+            padding-bottom: 8px;
             margin-top: 0;
         }
 
-        /* Perfil Estilo Wiki con Avatar Vectorial */
+        /* Perfil Estilo Wiki con Avatar Recreado */
         .infobox {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
         }
 
-        /* Avatar de Bruja recreado con SVG */
+        /* Avatar Vectorial de Bruja (SVG) idéntico al plano */
         .witch-avatar {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             border: 3px solid #b38f00;
-            background-color: var(--bg-deep);
+            background-color: #050208;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="%23050208" stroke="%23b38f00" stroke-width="2"/><path d="M50 15 L80 75 L20 75 Z" fill="%234c2a6b" stroke="%23c5a059" stroke-width="2"/><circle cx="50" cy="45" r="10" fill="%23e0d5e8" stroke="%23c5a059" stroke-width="1"/></svg>');
             background-size: cover;
-            box-shadow: 0 0 15px rgba(179, 143, 0, 0.5);
+            box-shadow: 0 0 12px rgba(179, 143, 0, 0.4);
             flex-shrink: 0;
         }
 
         .infobox table {
             width: 100%;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
-        .infobox td { padding: 8px 0; }
+        .infobox td { padding: 6px 0; }
         .label { color: var(--gold); font-weight: bold; width: 45%; }
         
-        /* Ajuste de color para tabla en papel */
+        /* Ajuste color tabla en papel */
         #perfil .label { color: #806600; }
-        #perfil td { border-bottom: 1px solid rgba(128, 102, 0, 0.1); }
+        #perfil td { border-bottom: 1px solid rgba(128, 102, 0, 0.08); }
 
-        /* Biblioteca */
+        /* Biblioteca Gótica */
         .shelf {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 12px;
             margin-top: 15px;
         }
 
         .book {
-            height: 130px;
-            background: var(--violet);
-            border-left: 5px solid var(--gold);
+            height: 120px;
+            color: white;
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
-            text-align: center;
-            padding: 5px;
-            box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+            box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
             transition: 0.3s;
         }
-        .book:hover { transform: translateY(-5px) rotate(-2deg); }
+        .book:hover { transform: translateY(-3px); }
 
-        /* Sistema de Galería Dinámica */
+        /* Colores específicos de lomos idénticos al plano */
+        .book.dracula { background-color: var(--dracula-book); border-left: 5px solid var(--gold); }
+        .book.crimen { background-color: #1a1a1a; border-left: 5px solid #8b0000; }
+        .book.brujas { background-color: #004d40; border-left: 5px solid #00c853; }
+        .book.vampiros { background-color: #21162d; border-left: 5px solid #4c2a6b; }
+
+        /* Sistema de Galería y Botón de Carga */
         #gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .photo-item {
             width: 100%;
-            height: 160px;
+            height: 150px;
             object-fit: cover;
             border: 1px solid var(--gold);
         }
 
         .upload-btn {
-            background: var(--gold);
-            color: var(--bg-deep);
+            background-color: var(--gold);
+            color: var(--bg-interface);
             border: none;
-            padding: 15px 25px;
+            padding: 12px 20px;
             font-family: 'Playfair Display SC', serif;
             font-weight: bold;
             cursor: pointer;
@@ -225,22 +222,23 @@ cat << 'EOF' > index.html
             transition: 0.3s;
         }
 
-        .upload-btn:hover { background: white; transform: scale(1.02); }
+        .upload-btn:hover { background-color: white; transform: scale(1.01); }
 
         footer {
-            margin-top: 100px;
+            margin-top: 80px;
             text-align: center;
-            border-top: 1px solid var(--violet);
-            padding: 20px;
+            border-top: 1px solid var(--violet-book);
+            padding: 15px;
             color: var(--gold);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
     </style>
 </head>
 <body>
 
 <aside>
-    <div class="side-title">Keissy Nicole<br>Ogando Montero</div>
+    <div class="side-title">KEISSY NICOLE</div>
+    <div class="side-subtitle">OGANDO MONTERO</div>
     <nav>
         <a href="#perfil">✦ Perfil Místico</a>
         <a href="#biblioteca">✦ La Biblioteca Gótica</a>
@@ -266,7 +264,7 @@ cat << 'EOF' > index.html
                 <div class="witch-avatar"></div> <table>
                     <tr><td class="label">Nacimiento</td><td>25 de Agosto (Virgo)</td></tr>
                     <tr><td class="label">Origen</td><td>El Cercado, San Juan</td></tr>
-                    <tr><td class="label">Estatus</td><td>Lectora Elite</td></tr>
+                    <tr><td class="label">Estatus</td><td>Lectora Legendaria</td></tr>
                     <tr><td class="label">Facultad</td><td>Psicología</td></tr>
                     <tr><td class="label">Esencia</td><td>Bruja Aesthetic / Indie</td></tr>
                 </table>
@@ -277,24 +275,30 @@ cat << 'EOF' > index.html
             <h2>La Estantería Gótica</h2>
             <p>Récord: 104 libros devorados.</p>
             <div class="shelf">
-                <div class="book">Drácula</div>
-                <div class="book">Crimen y Castigo</div>
-                <div class="book">Asesino de Brujas</div>
-                <div class="book">Sidney Sheldon</div>
-                <div class="book">Vampiros</div>
+                <div class="book dracula">Drácula</div>
+                <div class="book crimen">Crimen y Castigo</div>
+                <div class="book brujas">Asesino de Brujas</div>
+                <div class="book vampiros">Series Vampiros</div>
+                <div class="book vampiros">K-Dramas</div>
             </div>
         </section>
 
         <section id="psique" class="card" style="grid-column: span 2;">
             <h2>Laboratorio del Comportamiento (Ψ)</h2>
             <div style="display: flex; gap: 20px;">
-                <div style="flex: 1; border-left: 2px solid var(--violet); padding-left: 15px;">
-                    <h3 style="color:var(--gold)">Análisis de la Mente</h3>
-                    <p>Espacio dedicado al estudio de la conducta humana, donde la ciencia se encuentra con la intuición.</p>
+                <div style="flex: 1; border-left: 2px solid #4c2a6b; padding-left: 15px; display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 50px; height: 50px; background-color: var(--violet-book); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--gold); flex-shrink: 0; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="%234c2a6b"/><path d="M50 20 L50 80 M20 50 L80 50" stroke="%23c5a059" stroke-width="4"/><circle cx="50" cy="50" r="15" fill="%23c5a059" stroke="%234c2a6b" stroke-width="2"/></svg>'); background-size: cover;"></div>
+                    <div>
+                        <h3 style="color:var(--gold); margin: 0;">Análisis de la Mente</h3>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Espacio dedicado al estudio de la conducta humana.</p>
+                    </div>
                 </div>
-                <div style="flex: 1; border-left: 2px solid var(--violet); padding-left: 15px;">
-                    <h3 style="color:var(--gold)">Referencias</h3>
-                    <p>Integrando las sombras de Dostoievski con los fundamentos de la psicología moderna.</p>
+                <div style="flex: 1; border-left: 2px solid #4c2a6b; padding-left: 15px; display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 50px; height: 50px; background-color: var(--violet-book); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--gold); flex-shrink: 0; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="%234c2a6b"/><path d="M50 20 L50 80 M20 50 L80 50" stroke="%23c5a059" stroke-width="4"/><circle cx="50" cy="50" r="15" fill="%23c5a059" stroke="%234c2a6b" stroke-width="2"/></svg>'); background-size: cover;"></div>
+                    <div>
+                        <h3 style="color:var(--gold); margin: 0;">Referencias</h3>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Integrando las sombras de Dostoievski con la psicología moderna.</p>
+                    </div>
                 </div>
             </div>
         </section>
