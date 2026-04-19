@@ -4,157 +4,157 @@ cat << 'EOF' > index.html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santuario Digital de Keissy Nicole</title>
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Playfair+Display:ital,wght@0,700;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <title>Keissy Nicole | El Santuario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Marcellus&family=Pinyon+Script&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold-bright: #f9e2af;
-            --gold-shadow: #856a31;
-            --wood-grain: #1d110a;
-            --paper-base: #e6d5b8;
-            --magic-purple: #3a1c5e;
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --wood: #1a0f0a;
+            --paper: #e4d5b7;
+            --violet: #4a148c;
+            --deep-black: #050208;
         }
 
-        /* FILTRO PARA TEXTURA DE PAPEL REAL */
-        svg { position: absolute; width: 0; height: 0; }
-        
+        * { box-sizing: border-box; }
         body {
-            background: #050208;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(58, 28, 94, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(58, 28, 94, 0.1) 0%, transparent 40%);
-            color: var(--gold-bright);
+            background-color: var(--deep-black);
+            background-image: radial-gradient(circle at 50% 50%, #1a0b2e 0%, var(--deep-black) 100%);
+            color: var(--gold);
             font-family: 'Marcellus', serif;
             margin: 0;
             display: flex;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* BARRA LATERAL: EFECTO MADERA TALLADA */
+        /* BARRA LATERAL ESTILO MUEBLE ANTIGUO */
         aside {
             width: 300px;
-            background: linear-gradient(to right, #2c1e14, #1a0f0a);
-            border-right: 3px solid var(--gold-shadow);
-            box-shadow: 15px 0 35px rgba(0,0,0,0.9);
-            padding: 40px 20px;
+            background: linear-gradient(180deg, #2c1e14 0%, #1a0f0a 100%);
+            border-right: 2px solid var(--gold);
             height: 100vh;
             position: fixed;
-            box-sizing: border-box;
+            padding: 40px 20px;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
             z-index: 100;
-            border-image: linear-gradient(to bottom, var(--gold-bright), var(--gold-shadow)) 1;
         }
 
-        .side-title {
-            font-family: 'Playfair Display', serif;
+        .side-brand {
             text-align: center;
-            border-bottom: 1px solid var(--gold-shadow);
+            border-bottom: 1px solid var(--gold);
             padding-bottom: 20px;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
         }
+
+        .side-brand h2 { font-family: 'Cinzel', serif; font-size: 1.2rem; margin: 0; letter-spacing: 2px; }
 
         nav a {
-            display: block;
-            padding: 18px;
-            color: var(--gold-bright);
+            display: flex;
+            align-items: center;
+            color: var(--gold);
             text-decoration: none;
-            margin-bottom: 12px;
-            background: rgba(0,0,0,0.2);
-            border-left: 3px solid transparent;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 15px;
+            margin-bottom: 8px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid transparent;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         nav a:hover {
-            background: rgba(58, 28, 94, 0.3);
-            border-left: 3px solid var(--gold-bright);
-            padding-left: 25px;
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+            transform: translateX(8px);
         }
 
-        /* BOTÓN CARGA ESTILO VINTAGE */
-        .upload-trigger {
-            background: linear-gradient(135deg, var(--gold-bright), var(--gold-shadow));
-            color: #1a0f0a;
+        .btn-magic {
+            background: linear-gradient(135deg, var(--gold), #856a31);
+            color: black;
             border: none;
             padding: 15px;
             width: 100%;
+            font-family: 'Cinzel', serif;
             font-weight: bold;
-            font-family: 'Playfair Display', serif;
+            margin-top: auto;
             cursor: pointer;
-            margin-top: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        /* CONTENIDO */
+        main { margin-left: 300px; padding: 60px; width: 100%; }
+
+        header { text-align: center; margin-bottom: 60px; }
+        header h1 { font-family: 'Cinzel', serif; font-size: 3rem; margin: 0; text-shadow: 0 0 15px var(--gold-glow); }
+        header p { font-family: 'Pinyon Script', cursive; font-size: 2.5rem; color: #a582ff; margin: -10px 0 0 0; }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+        /* EL PERGAMINO */
+        .card-perfil {
+            background: var(--paper);
+            background-image: url('https://www.transparenttextures.com/patterns/papyros.png');
+            color: #2b1b12;
+            padding: 30px;
+            border: 1px solid #c0a080;
+            box-shadow: 15px 15px 40px rgba(0,0,0,0.7);
+            display: flex;
+            gap: 25px;
+            align-items: center;
             border-radius: 2px;
         }
 
-        main { margin-left: 300px; padding: 60px; width: 100%; }
-
-        header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; text-align: center; color: var(--gold-bright); }
-        header p { font-family: 'Pinyon Script', cursive; font-size: 2.2rem; text-align: center; color: #a582ff; margin: -10px 0 60px 0; }
-
-        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-
-        /* PERGAMINO CON TEXTURA RUGOSA */
-        .card-parchment {
-            background: var(--paper-base);
-            filter: url('#paper-texture'); /* Aplicamos textura de papel */
-            color: #2b1b12;
-            padding: 40px;
-            border: 1px solid #b39671;
-            box-shadow: 20px 20px 40px rgba(0,0,0,0.6), inset 0 0 60px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .card-parchment h2 { border-bottom: 2px solid #2b1b12; font-family: 'Playfair Display', serif; margin-top: 0; }
-
-        .profile-area { display: flex; gap: 30px; align-items: center; }
-        .avatar-circle {
-            width: 140px; height: 140px; border-radius: 50%; border: 6px double #2b1b12;
-            background: #000 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="black"/><path d="M50 15 L85 85 L15 85 Z" fill="%234a148c" stroke="%23d4af37" stroke-width="2"/></svg>');
-            background-size: cover;
+        .avatar-frame {
+            width: 150px; height: 150px; border-radius: 50%; border: 4px double #2b1b12;
+            background: url('avatar.png') center/cover;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            flex-shrink: 0;
         }
 
-        /* TARJETAS GÓTICAS */
-        .card-gothic {
-            background: rgba(20, 10, 30, 0.8);
-            border: 1px solid var(--gold-shadow);
+        .info h2 { font-family: 'Cinzel', serif; border-bottom: 2px solid #2b1b12; margin: 0 0 15px 0; font-size: 1.4rem; }
+        .info p { margin: 5px 0; font-size: 0.95rem; }
+
+        /* BIBLIOTECA */
+        .card-dark {
+            background: rgba(20, 10, 30, 0.6);
+            border: 1px solid var(--gold);
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .shelf { display: flex; align-items: flex-end; gap: 10px; height: 160px; border-bottom: 5px solid #2a1b0a; }
-        .book { width: 45px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; color: white; font-size: 0.8rem; box-shadow: 5px 0 10px rgba(0,0,0,0.7); }
+        .shelf { display: flex; align-items: flex-end; gap: 10px; height: 160px; border-bottom: 4px solid #3e2723; }
+        .book { width: 40px; text-align: center; writing-mode: vertical-rl; color: white; font-size: 0.7rem; border-left: 3px solid var(--gold); box-shadow: 3px 0 10px rgba(0,0,0,0.5); transition: 0.3s; }
+        .book:hover { transform: translateY(-10px); }
 
+        /* LABORATORIO */
         .lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-        .lab-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold-bright); background: var(--magic-purple); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .lab-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); background: var(--violet); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
 
-        #photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 25px; }
-        .uploaded-img { width: 100%; height: 200px; object-fit: cover; border: 2px solid var(--gold-shadow); filter: sepia(0.3) contrast(1.1); }
+        /* GALERÍA */
+        #gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
+        .img-card { width: 100%; height: 200px; object-fit: cover; border: 1px solid var(--gold); filter: grayscale(0.3); transition: 0.5s; }
+        .img-card:hover { filter: grayscale(0); transform: scale(1.03); }
 
     </style>
 </head>
 <body>
 
-<svg>
-  <filter id='paper-texture'>
-    <feTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' result='noise' />
-    <feDiffuseLighting in='noise' lighting-color='#e6d5b8' surfaceScale='2'>
-      <feDistantLight azimuth='45' elevation='60' />
-    </feDiffuseLighting>
-  </filter>
-</svg>
-
 <aside>
-    <div class="side-title">
-        <h2 style="margin:0">KEISSY NICOLE</h2>
-        <small>PSICÓLOGA & LECTORA</small>
+    <div class="side-brand">
+        <h2>KEISSY NICOLE</h2>
+        <small style="opacity: 0.6;">OGANDO MONTERO</small>
     </div>
     <nav>
-        <a href="#perfil">✦ PERFIL MÍSTICO</a>
-        <a href="#biblioteca">✦ BIBLIOTECA GÓTICA</a>
-        <a href="#psique">✦ LABORATORIO Ψ</a>
-        <a href="#galeria">✦ MI COLECCIÓN</a>
+        <a href="#">✦ El Inicio</a>
+        <a href="#">✦ Biblioteca Gótica</a>
+        <a href="#">✦ Laboratorio Ψ</a>
+        <a href="#">✦ Mi Colección</a>
     </nav>
-    <button class="upload-trigger" onclick="document.getElementById('file-in').click()">AÑADIR A LA COLECCIÓN</button>
+    <button class="btn-magic" onclick="document.getElementById('file-in').click()">AÑADIR A LA COLECCIÓN</button>
     <input type="file" id="file-in" hidden accept="image/*">
 </aside>
 
@@ -164,59 +164,57 @@ cat << 'EOF' > index.html
         <p>Entre la psique y la fantasía</p>
     </header>
 
-    <div class="content-grid">
-        <section id="perfil" class="card-parchment">
-            <h2>Datos de la Iniciada</h2>
-            <div class="profile-area">
-                <div class="avatar-circle"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8;">
-                    <b>Nacimiento:</b> 25 de Agosto<br>
-                    <b>Origen:</b> El Cercado, San Juan<br>
-                    <b>Pasiones:</b> Fantasía, Vampiros, K-Dramas<br>
-                    <b>Estatus:</b> LECTORA ELITE (+100)
-                </div>
+    <div class="grid">
+        <section class="card-perfil">
+            <div class="avatar-frame"></div>
+            <div class="info">
+                <h2>PERFIL MÍSTICO</h2>
+                <p><b>Origen:</b> El Cercado, San Juan</p>
+                <p><b>Nacimiento:</b> 25 de Agosto</p>
+                <p><b>Pasiones:</b> Vampiros, K-Dramas & Psique</p>
+                <p><b>Rango:</b> Lectora Legendaria</p>
             </div>
         </section>
 
-        <section id="biblioteca" class="card-gothic">
-            <h2>Biblioteca Gótica</h2>
+        <section class="card-dark">
+            <h2 style="font-family: 'Cinzel'; margin-top: 0;">BIBLIOTECA GÓTICA</h2>
             <div class="shelf">
-                <div class="book" style="background:#641e16; height:150px">Drácula</div>
-                <div class="book" style="background:#1a1a1a; height:155px">Crimen y Castigo</div>
-                <div class="book" style="background:#0e4b2d; height:140px">Brujas</div>
-                <div class="book" style="background:#311b92; height:145px">Psicología</div>
-                <div style="margin-left:auto; font-size:1.8rem; font-weight:bold">104</div>
+                <div class="book" style="background: #641e16; height: 140px;">DRÁCULA</div>
+                <div class="book" style="background: #1b1b1b; height: 155px;">CRIMEN Y CASTIGO</div>
+                <div class="book" style="background: #145a32; height: 130px;">BRUJAS</div>
+                <div class="book" style="background: #311b92; height: 145px;">PSICOLOGÍA</div>
+                <div style="margin-left: auto; font-size: 2rem; font-weight: bold;">104</div>
             </div>
         </section>
 
-        <section id="psique" class="card-gothic" style="grid-column: span 2;">
-            <h2>Laboratorio Psicólogo</h2>
+        <section class="card-dark" style="grid-column: span 2;">
+            <h2 style="font-family: 'Cinzel'; margin-top: 0;">LABORATORIO PSICOLÓGICO</h2>
             <div class="lab-grid">
-                <div style="display:flex; align-items:center; gap:20px">
+                <div style="display: flex; align-items: center; gap: 15px;">
                     <div class="lab-circle">Ψ</div>
-                    <div><b>Introducción</b><br><small>Procesos mentales.</small></div>
+                    <div><b>CONDUCTA</b><br><small>Exploración mental.</small></div>
                 </div>
-                <div style="display:flex; align-items:center; gap:20px">
+                <div style="display: flex; align-items: center; gap: 15px;">
                     <div class="lab-circle">🧠</div>
-                    <div><b>Análisis</b><br><small>Exploración del alma.</small></div>
+                    <div><b>ANÁLISIS</b><br><small>El mapa del alma.</small></div>
                 </div>
             </div>
         </section>
 
-        <section id="galeria" class="card-gothic" style="grid-column: span 2;">
-            <h2>Mi Safe Place: Galería Personal</h2>
-            <div id="photo-gallery"></div>
+        <section class="card-dark" style="grid-column: span 2;">
+            <h2 style="font-family: 'Cinzel'; margin-top: 0;">MI COLECCIÓN</h2>
+            <div id="gallery"></div>
         </section>
     </div>
 </main>
 
 <script>
     const fileIn = document.getElementById('file-in');
-    const gal = document.getElementById('photo-gallery');
+    const gal = document.getElementById('gallery');
 
     window.onload = () => {
-        const photos = JSON.parse(localStorage.getItem('keissy_final_db') || '[]');
-        photos.forEach(p => add(p));
+        const saved = JSON.parse(localStorage.getItem('keissy_v3') || '[]');
+        saved.forEach(s => render(s));
     };
 
     fileIn.onchange = (e) => {
@@ -224,19 +222,18 @@ cat << 'EOF' > index.html
         if(file) {
             const reader = new FileReader();
             reader.onload = (ev) => {
-                const data = ev.target.result;
-                add(data);
-                const photos = JSON.parse(localStorage.getItem('keissy_final_db') || '[]');
-                photos.push(data);
-                localStorage.setItem('keissy_final_db', JSON.stringify(photos));
+                render(ev.target.result);
+                const saved = JSON.parse(localStorage.getItem('keissy_v3') || '[]');
+                saved.push(ev.target.result);
+                localStorage.setItem('keissy_v3', JSON.stringify(saved));
             };
             reader.readAsDataURL(file);
         }
     };
 
-    function add(src) {
+    function render(src) {
         const img = document.createElement('img');
-        img.src = src; img.className = 'uploaded-img';
+        img.src = src; img.className = 'img-card';
         gal.appendChild(img);
     }
 </script>
